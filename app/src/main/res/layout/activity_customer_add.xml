@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="House Number/Details">
+
+            <EditText
+                android:id="@+id/Et_houseNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Resident Name">
+
+            <EditText
+                android:id="@+id/Et_residentName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Resident Mobile Number">
+
+            <EditText
+                android:id="@+id/et_residentMobileNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Advance Amount">
+
+            <EditText
+                android:id="@+id/et_advanceAmount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <CheckBox
+            android:id="@+id/Cb_advanceReceived"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="advance received" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Rent Amount">
+
+            <EditText
+                android:id="@+id/Et_rendAmount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="First EB Unit">
+
+            <EditText
+                android:id="@+id/Et_ebUnit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <Switch
+            android:id="@+id/Sv_waterCharge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Water amount charged by owner" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Water Amount">
+
+            <EditText
+                android:id="@+id/Et_waterAmount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <Switch
+            android:id="@+id/Sv_maintenceCharge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="mainrenace amount charged by owner" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Maintenace Amount">
+
+            <EditText
+                android:id="@+id/Et_maintenceAmount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <Button
+            android:id="@+id/Bt_AddResident"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Resident"/>
+
+    </LinearLayout>
+
+</ScrollView>

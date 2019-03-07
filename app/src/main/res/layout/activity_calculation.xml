@@ -1,6 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/Tv_houseNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="House Number/Details" />
+
+
+        <TextView
+            android:id="@+id/Et_residentName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Resident Name" />
+
+
+        <TextView
+            android:id="@+id/Et_rendAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Rent Amount" />
+
+
+        <Switch
+            android:id="@+id/Sv_eb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Eb amount charged by owner" />
+
+
+        <TextView
+            android:id="@+id/Tv_OldebUnit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Current EB Unit" />
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Current EB Unit">
+
+            <EditText
+                android:id="@+id/Et_ebUnit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Per Unit Amount">
+
+            <EditText
+                android:id="@+id/Et_ebUnitPerAmount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+
+        <Switch
+            android:id="@+id/Sv_waterCharge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Water amount charged by owner" />
+
+
+        <TextView
+            android:id="@+id/Et_waterAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Water Amount" />
+
+
+        <Switch
+            android:id="@+id/Sv_maintenceCharge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="maintenace amount charged by owner" />
+
+
+
+            <TextView
+                android:id="@+id/Et_maintenceAmount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Maintenace Amount" />
+
+
+
+        <Button
+            android:id="@+id/Bt_AddResident"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Calculate" />
+
+    </LinearLayout>
+
+</ScrollView>

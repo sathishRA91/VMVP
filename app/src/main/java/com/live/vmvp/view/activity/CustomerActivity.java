@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import com.live.vmvp.R;
 import com.live.vmvp.contract.CustomerAddContract;
+import com.live.vmvp.data.Database;
+import com.live.vmvp.model.DataModelAddCustomer;
 import com.live.vmvp.presenter.CustomerAddPresenter;
 
 public class CustomerActivity extends AppCompatActivity implements CustomerAddContract, View.OnClickListener, CompoundButton.OnCheckedChangeListener {
@@ -26,6 +28,7 @@ public class CustomerActivity extends AppCompatActivity implements CustomerAddCo
 
     private CustomerAddPresenter presenter;
     private boolean isAdvance, isWater, isMaintence;
+    private Database database;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,38 +54,44 @@ public class CustomerActivity extends AppCompatActivity implements CustomerAddCo
         Sv_maintenceCharge = findViewById(R.id.Sv_maintenceCharge);
         Bt_AddResident = findViewById(R.id.Bt_AddResident);
 
+        database=new Database(this);
         Bt_AddResident.setOnClickListener(this);
-
         Cb_advanceReceived.setOnCheckedChangeListener(this);
         Sv_waterCharge.setOnCheckedChangeListener(this);
         Sv_maintenceCharge.setOnCheckedChangeListener(this);
     }
 
     @Override
-    public void addResident() {
+    public void addResident(DataModelAddCustomer dataModel)
+    {
 
-        Toast.makeText(this, "Ok", Toast.LENGTH_SHORT).show();
+       long id= database.INSERT_CUSTOMER(dataModel);
+
+       if (id>0)
+       {
+           Toast.makeText(this, "Resident Added Sucessfully", Toast.LENGTH_SHORT).show();
+       }
+       else
+       {
+           Toast.makeText(this, "Please check and try again!", Toast.LENGTH_SHORT).show();
+       }
+
 
     }
 
     @Override
-    public boolean validation(String houseNumber, String residentName, String residentMobileNumber,
-                              String advanceAmount, boolean isAdvanceDone, String rendAmount,
-                              String ebUnit, boolean isWater, String waterAmount,
-                              boolean isMaintenace, String maintenceAmount) {
-
-
+    public boolean validation(DataModelAddCustomer dataModel) {
         boolean house, name, mobileNumber, advance, rent, eb, water, maintenance;
 
 
-        house = houseNumber != null && houseNumber.length() > 0;
-        name = residentName != null && residentName.length() > 0;
-        mobileNumber = residentMobileNumber != null && residentMobileNumber.length() == 10;
-        advance = advanceAmount != null && advanceAmount.length() > 0;
-        rent = rendAmount != null && rendAmount.length() > 0;
-        eb = ebUnit != null && ebUnit.length() > 0;
-        water = waterAmount != null && waterAmount.length() > 0;
-        maintenance = maintenceAmount != null && maintenceAmount.length() > 0;
+        house = dataModel.getCustomerAdd_houseNumber() != null && dataModel.getCustomerAdd_houseNumber().length() > 0;
+        name = dataModel.getCustomerAdd_residentName() != null && dataModel.getCustomerAdd_residentName().length() > 0;
+        mobileNumber = dataModel.getCustomerAdd_residentMobileNumber() != null && dataModel.getCustomerAdd_residentMobileNumber().length() == 10;
+        advance = dataModel.getCustomerAdd_advanceAmount() != null && dataModel.getCustomerAdd_advanceAmount().length() > 0;
+        rent = dataModel.getCustomerAdd_rendAmount() != null && dataModel.getCustomerAdd_rendAmount().length() > 0;
+        eb = dataModel.getCustomerAdd_ebUnit() != null && dataModel.getCustomerAdd_ebUnit().length() > 0;
+        water = dataModel.getCustomerAdd_waterAmount() != null && dataModel.getCustomerAdd_waterAmount().length() > 0;
+        maintenance = dataModel.getCustomerAdd_maintenceAmount() != null && dataModel.getCustomerAdd_maintenceAmount().length() > 0;
 
 
         if (house) {
@@ -126,7 +135,7 @@ public class CustomerActivity extends AppCompatActivity implements CustomerAddCo
         }
 
 
-        if (isWater) {
+        if (dataModel.isCustomerAdd_isWater()) {
             if (water) {
                 Et_waterAmount.setError(null);
             } else {
@@ -140,7 +149,7 @@ public class CustomerActivity extends AppCompatActivity implements CustomerAddCo
         }
 
 
-        if (isMaintenace) {
+        if (dataModel.isCustomerAdd_isMaintenace()) {
 
             if (maintenance) {
                 Et_maintenceAmount.setError(null);
@@ -157,6 +166,8 @@ public class CustomerActivity extends AppCompatActivity implements CustomerAddCo
 
     }
 
+
+
     @Override
     public void onClick(View v) {
 
@@ -169,7 +180,7 @@ public class CustomerActivity extends AppCompatActivity implements CustomerAddCo
                     isAdvance, Et_rendAmount.getText().toString().trim(),
                     Et_ebUnit.getText().toString().trim(),
                     isWater, Et_waterAmount.getText().toString().trim(),
-                    isMaintence, Et_maintenceAmount.getText().toString().trim());
+                    isMaintence, Et_maintenceAmount.getText().toString().trim(),"Join Date");
         }
 
     }

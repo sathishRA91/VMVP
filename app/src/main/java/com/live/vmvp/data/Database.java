@@ -1,4 +1,3 @@
-/*
 package com.live.vmvp.data;
 
 import android.content.ContentValues;
@@ -7,11 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.ufours.fusedlocationtest.model.ItemModel;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.live.vmvp.model.DataModelAddCustomer;
 
 import java.util.ArrayList;
 
@@ -19,64 +14,55 @@ public class Database extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
 
-    private static final String DATABASE_NAME = "AramDB";
+    private static final String DATABASE_NAME = "RentDb";
 
 
-    private static final String TABLE_FAVOURITE = "table_favourite";
     private static final String TABLE_CUSTOMER = "table_customer";
     private static final String TABLE_CALCULATION = "table_calculation";
     private static final String TABLE_HISTORY = "table_history";
 
 
-    private static final String KEY_FAVOURITE_ID = "key_favourite_id";
-    private static final String FAVOURITE_ID = "favourite_id";
-    private static final String FAVOURITE_TITLE_NAME = "favourite_title_name";
-    private static final String FAVOURITE_DESCRIPTION= "favourite_description";
-    private static final String FAVOURITE_AUTHOR = "favourite_author";
-    private static final String FAVOURITE_DATE_TIME_AGO = "favourite_date_time_ago";
+    private static final String KEY_CUSTOMER_ID = "key_customer_id";
+    private static final String CUSTOMER_NAME = "customer_name";
+    private static final String CUSTOMER_MOBILE_NUMBER = "customer_mobile_number";
+    private static final String CUSTOMER_HOUSE_NO = "customer_house_no";
+    private static final String CUSTOMER_ADVANCE = "customer_advance";
+    private static final String CUSTOMER_RENT_AMOUNT = "customer_rent_amount";
+    private static final String CUSTOMER_HOUSE_JOIN = "customer_house_join";
+    private static final String CUSTOMER_FIRST_TIME_EB_UNIT = "customer_first_time_eb_unit";
+    private static final String CUSTOMER_FIRST_EB_UNIT = "customer_first_eb_unit";
+    private static final String CUSTOMER_LAST_EB_UNIT = "customer_last_eb_unit";
+    private static final String CUSTOMER_IS_WATER = "customer_is_water";
+    private static final String CUSTOMER_IS_WATER_AMOUNT = "customer_is_water_amount";
+    private static final String CUSTOMER_IS_MAINTENANCE = "customer_is_maintenance";
+    private static final String CUSTOMER_MAINTENANCE_CHARGE = "customer_maintenance_charge";
 
-    private static final String KEY_CUSTOMER_ID = "key_favourite_id";
-    private static final String CUSTOMER_NAME = "favourite_id";
-    private static final String CUSTOMER_MOBILE_NUMBER = "favourite_id";
-    private static final String CUSTOMER_HOUSE_NO = "favourite_id";
-    private static final String CUSTOMER_ADVANCE = "favourite_id";
-    private static final String CUSTOMER_RENT_AMOUNT = "favourite_id";
-    private static final String CUSTOMER_HOUSE_JOIN = "favourite_id";
-    private static final String CUSTOMER_IS_EB = "favourite_id";
-    private static final String CUSTOMER_FIRST_TIME_EB_UNIT = "favourite_id";
-    private static final String CUSTOMER_FIRST_EB_UNIT = "favourite_id";
-    private static final String CUSTOMER_LAST_EB_UNIT = "favourite_id";
-    private static final String CUSTOMER_IS_WATER = "favourite_id";
-    private static final String CUSTOMER_IS_WATER_AMOUNT = "favourite_id";
-    private static final String CUSTOMER_IS_MAINTENANCE = "favourite_id";
-    private static final String CUSTOMER_MAINTENANCE_CHARGE = "favourite_id";
+    private static final String KEY_CALUCULATE_ID = "key_caluculate_id";
+    private static final String CALUCULATE_CUSTOMER_ID = "caluculate_customer_id";
+    private static final String CALUCULATE_DATE = "caluculate_date";
+    private static final String CALUCULATE_CUSTOMER_NAME = "caluculate_customer_name";
+    private static final String CALUCULATE_HOUSE_NO = "caluculate_house_no";
+    private static final String CALUCULATE_RENT_AMOUNT = "caluculate_rent_amount";
+    private static final String CALUCULATE_IS_WATER = "caluculate_is_water";
+    private static final String CALUCULATE_WATER_AMOUNT = "caluculate_water_amount";
+    private static final String CALUCULATE_IS_EB = "caluculate_is_eb";
+    private static final String CALUCULATE_EB_AMOUNT = "caluculate_eb_amount";
+    private static final String CALUCULATE_IS_MAINTAIN = "caluculate_is_maintain";
+    private static final String CALUCULATE_MAINTAIN_CHARGE = "caluculate_maintain_charge";
+    private static final String CALUCULATE_TOTAL_AMOUNT = "caluculate_total_amount";
+    private static final String CALUCULATE_RECEIVE_DATE = "caluculate_receive_date";
+    private static final String CALUCULATE_RECEIVED_AMOUNT = "caluculate_received_amount";
+    private static final String CALUCULATE_PENDING_AMOUNT = "caluculate_pending_amount";
 
-    private static final String KEY_CALUCULATE_ID = "favourite_id";
-    private static final String CALUCULATE_CUSTOMER_ID = "favourite_id";
-    private static final String CALUCULATE_DATE = "favourite_id";
-    private static final String CALUCULATE_CUSTOMER_NAME = "favourite_id";
-    private static final String CALUCULATE_HOUSE_NO = "favourite_id";
-    private static final String CALUCULATE_RENT_AMOUNT = "favourite_id";
-    private static final String CALUCULATE_IS_WATER = "favourite_id";
-    private static final String CALUCULATE_WATER_AMOUNT = "favourite_id";
-    private static final String CALUCULATE_IS_EB = "favourite_id";
-    private static final String CALUCULATE_EB_AMOUNT = "favourite_id";
-    private static final String CALUCULATE_IS_MAINTAIN = "favourite_id";
-    private static final String CALUCULATE_MAINTAIN_CHARGE = "favourite_id";
-    private static final String CALUCULATE_TOTAL_AMOUNT = "favourite_id";
-    private static final String CALUCULATE_RECEIVE_DATE = "favourite_id";
-    private static final String CALUCULATE_RECEIVED_AMOUNT = "favourite_id";
-    private static final String CALUCULATE_PENDING_AMOUNT = "favourite_id";
-
-    private static final String KEY_HISTORY_ID = "favourite_id";
-    private static final String HISTORY_CUSTOMER_ID = "favourite_id";
-    private static final String HISTORY_CALCULATE_DATE = "favourite_id";
-    private static final String HISTORY_RECEIVE_DATE = "favourite_id";
-    private static final String HISTORY_CALUCULATE_ID= "favourite_id";
-    private static final String HISTORY_CUSTOMER_NAME = "favourite_id";
-    private static final String HISTORY_HOUSE_NO = "favourite_id";
-    private static final String HISTORY_TOTAL_AMOUNT = "favourite_id";
-    private static final String HISTORY_RECEIVED_AMOUNT = "favourite_id";
+    private static final String KEY_HISTORY_ID = "key_history_id";
+    private static final String HISTORY_CUSTOMER_ID = "history_customer_id";
+    private static final String HISTORY_CALCULATE_DATE = "history_calculate_date";
+    private static final String HISTORY_RECEIVE_DATE = "history_receive_date";
+    private static final String HISTORY_CALUCULATE_ID = "history_caluculate_id";
+    private static final String HISTORY_CUSTOMER_NAME = "history_customer_name";
+    private static final String HISTORY_HOUSE_NO = "history_house_no";
+    private static final String HISTORY_TOTAL_AMOUNT = "history_total_amount";
+    private static final String HISTORY_RECEIVED_AMOUNT = "history_received_amount";
 
 
     public Database(Context context) {
@@ -87,15 +73,18 @@ public class Database extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
 
-        String CREATE_TABLE_FAVOURITE = "CREATE TABLE " + TABLE_FAVOURITE + "("
-                + KEY_FAVOURITE_ID + " INTEGER PRIMARY KEY," + FAVOURITE_ID + " TEXT,"
-                + FAVOURITE_TITLE_NAME + " TEXT," + FAVOURITE_DESCRIPTION + " TEXT,"
-                + FAVOURITE_AUTHOR + " TEXT,"
-                + FAVOURITE_DATE_TIME_AGO + " TEXT" + ")";
+        String CREATE_TABLE_CUSTOMER = "CREATE TABLE " + TABLE_CUSTOMER + "("
+                + KEY_CUSTOMER_ID + " INTEGER PRIMARY KEY," + CUSTOMER_NAME + " TEXT,"
+                + CUSTOMER_MOBILE_NUMBER + " TEXT," + CUSTOMER_HOUSE_NO + " TEXT,"
+                + CUSTOMER_ADVANCE + " TEXT," + CUSTOMER_RENT_AMOUNT + " TEXT,"
+                + CUSTOMER_HOUSE_JOIN + " TEXT," + CUSTOMER_FIRST_TIME_EB_UNIT + " TEXT,"
+                + CUSTOMER_FIRST_EB_UNIT + " TEXT," + CUSTOMER_LAST_EB_UNIT + " TEXT,"
+                + CUSTOMER_IS_WATER + " TEXT," + CUSTOMER_IS_WATER_AMOUNT + " TEXT,"
+                + CUSTOMER_IS_MAINTENANCE + " TEXT,"
+                + CUSTOMER_MAINTENANCE_CHARGE + " TEXT" + ")";
 
 
-
-        sqLiteDatabase.execSQL(CREATE_TABLE_FAVOURITE);
+        sqLiteDatabase.execSQL(CREATE_TABLE_CUSTOMER);
 
     }
 
@@ -103,7 +92,7 @@ public class Database extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
 
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_FAVOURITE);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_CUSTOMER);
 
 
         // Create tables again
@@ -111,22 +100,29 @@ public class Database extends SQLiteOpenHelper {
     }
 
 
-    public long INSERT_FAVOURITE(ItemModel data) {
+    public long INSERT_CUSTOMER(DataModelAddCustomer data) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         db.beginTransaction();
         ContentValues values = new ContentValues();
 
-
-        values.put(FAVOURITE_ID, data.getFavourite_id());
-        values.put(FAVOURITE_TITLE_NAME, data.getFavourite_title_name());
-        values.put(FAVOURITE_DESCRIPTION, data.getFavourite_description());
-        values.put(FAVOURITE_AUTHOR, data.getFavourite_author());
-        values.put(FAVOURITE_DATE_TIME_AGO, data.getFavourite_date_time_ago());
+        values.put(CUSTOMER_NAME, data.getCustomerAdd_residentName());
+        values.put(CUSTOMER_MOBILE_NUMBER, data.getCustomerAdd_residentMobileNumber());
+        values.put(CUSTOMER_HOUSE_NO, data.getCustomerAdd_houseNumber());
+        values.put(CUSTOMER_ADVANCE, data.getCustomerAdd_advanceAmount());
+        values.put(CUSTOMER_RENT_AMOUNT, data.getCustomerAdd_rendAmount());
+        values.put(CUSTOMER_HOUSE_JOIN, data.getCustomerAdd_joinDate());
+        values.put(CUSTOMER_FIRST_TIME_EB_UNIT, data.getCustomerAdd_ebUnit());
+        values.put(CUSTOMER_FIRST_EB_UNIT, data.getCustomerAdd_FirstEbUnit());
+        values.put(CUSTOMER_LAST_EB_UNIT, data.getCustomerAdd_SecondEbUnit());
+        values.put(CUSTOMER_IS_WATER, data.isCustomerAdd_isWater());
+        values.put(CUSTOMER_IS_WATER_AMOUNT, data.getCustomerAdd_waterAmount());
+        values.put(CUSTOMER_IS_MAINTENANCE, data.isCustomerAdd_isMaintenace());
+        values.put(CUSTOMER_MAINTENANCE_CHARGE, data.getCustomerAdd_maintenceAmount());
 
         long id = -1;
 
-        id = db.insert(TABLE_FAVOURITE, null, values);
+        id = db.insert(TABLE_CUSTOMER, null, values);
 
         db.setTransactionSuccessful();
         db.endTransaction();
@@ -135,26 +131,25 @@ public class Database extends SQLiteOpenHelper {
     }
 
 
-    public ArrayList<ItemModel> GETALL_FAVOURITE() {
+    public ArrayList<DataModelAddCustomer> GETALL_CUSTOMER() {
 
         SQLiteDatabase db = this.getWritableDatabase();
-        ArrayList<ItemModel> dataList = new ArrayList<>();
-        String selectQuery = "SELECT  * FROM " + TABLE_FAVOURITE;
+        ArrayList<DataModelAddCustomer> dataList = new ArrayList<>();
+        String selectQuery = "SELECT  * FROM " + TABLE_CUSTOMER;
 
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor != null && cursor.getCount() > 0) {
 
             if (cursor.moveToFirst()) {
                 do {
-                    ItemModel modelData = new ItemModel();
+                    DataModelAddCustomer modelData = new DataModelAddCustomer();
 
-                    modelData.setKey_favourite_id(Integer.parseInt(cursor.getString(0)));
+                   /* modelData.setKey_favourite_id(Integer.parseInt(cursor.getString(0)));
                     modelData.setFavourite_id(cursor.getString(1));
                     modelData.setFavourite_title_name(cursor.getString(2));
                     modelData.setFavourite_description(cursor.getString(3));
                     modelData.setFavourite_author(cursor.getString(4));
-                    modelData.setFavourite_date_time_ago(cursor.getString(5));
-
+                    modelData.setFavourite_date_time_ago(cursor.getString(5));*/
                     dataList.add(modelData);
                 } while (cursor.moveToNext());
             }
@@ -164,22 +159,23 @@ public class Database extends SQLiteOpenHelper {
     }
 
 
-    public void DELETE_FAVOURITE(int id) {
+    public void DELETE_CUSTOMER(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_FAVOURITE, KEY_FAVOURITE_ID + " = ?",
+        db.delete(TABLE_CUSTOMER, KEY_CUSTOMER_ID + " = ?",
                 new String[]{String.valueOf(id)});
         db.close();
     }
 
 
-    public void DELETE_ALL_FAVOURITE() {
+    public void DELETE_ALL_CUSTOMER() {
         SQLiteDatabase db = this.getWritableDatabase();
 
-        db.delete(TABLE_FAVOURITE, null, null);
+        db.delete(TABLE_CUSTOMER, null, null);
 
         db.close();
     }
 
+/*
     public boolean checkAlreadyTrip(String favourite_id) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -198,6 +194,7 @@ public class Database extends SQLiteOpenHelper {
             return false;
         }
     }
+*/
 
 
-}*/
+}

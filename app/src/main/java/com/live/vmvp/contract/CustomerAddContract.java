@@ -1,13 +1,13 @@
 package com.live.vmvp.contract;
 
+import com.live.vmvp.model.DataModelAddCustomer;
+
 public interface CustomerAddContract {
 
     void initView();
 
-    void addResident();
+    void addResident(DataModelAddCustomer dataModel);
 
-    boolean validation(String houseNumber, String residentName, String residentMobileNumber,
-                       String advanceAmount, boolean isAdvanceDone, String rendAmount, String ebUnit,
-                       boolean isWater, String waterAmount, boolean isMaintenace, String maintenceAmount);
+    boolean validation(DataModelAddCustomer dataModel);
 
 }

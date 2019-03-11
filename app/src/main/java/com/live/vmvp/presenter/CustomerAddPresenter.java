@@ -10,7 +10,8 @@ public class CustomerAddPresenter {
 
     private DataModelAddCustomer dataModel;
 
-    public CustomerAddPresenter(CustomerAddContract view) {
+    public CustomerAddPresenter(CustomerAddContract view)
+    {
         this.view = view;
         initPresenter();
     }

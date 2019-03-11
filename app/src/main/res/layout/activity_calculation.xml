@@ -17,14 +17,14 @@
 
 
         <TextView
-            android:id="@+id/Et_residentName"
+            android:id="@+id/Tv_residentName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Resident Name" />
 
 
         <TextView
-            android:id="@+id/Et_rendAmount"
+            android:id="@+id/Tv_rendAmount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Rent Amount" />
@@ -50,7 +50,7 @@
             android:hint="Enter Current EB Unit">
 
             <EditText
-                android:id="@+id/Et_ebUnit"
+                android:id="@+id/Et_ebCurrentUnit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number" />
@@ -81,7 +81,7 @@
 
 
         <TextView
-            android:id="@+id/Et_waterAmount"
+            android:id="@+id/Tv_waterAmount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Water Amount" />
@@ -96,7 +96,7 @@
 
 
             <TextView
-                android:id="@+id/Et_maintenceAmount"
+                android:id="@+id/Tv_maintenceAmount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Maintenace Amount" />
@@ -104,7 +104,7 @@
 
 
         <Button
-            android:id="@+id/Bt_AddResident"
+            android:id="@+id/Bt_calculate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Calculate" />

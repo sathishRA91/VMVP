@@ -84,7 +84,20 @@ public class Database extends SQLiteOpenHelper {
                 + CUSTOMER_MAINTENANCE_CHARGE + " TEXT" + ")";
 
 
+        String CREATE_TABLE_CALCULATION = "CREATE TABLE " + TABLE_CALCULATION + "("
+                + KEY_CALUCULATE_ID + " INTEGER PRIMARY KEY," + CALUCULATE_CUSTOMER_ID + " TEXT,"
+                + CALUCULATE_DATE + " TEXT," + CALUCULATE_CUSTOMER_NAME + " TEXT,"
+                + CALUCULATE_HOUSE_NO + " TEXT," + CALUCULATE_RENT_AMOUNT + " TEXT,"
+                + CALUCULATE_IS_WATER + " TEXT," + CALUCULATE_WATER_AMOUNT + " TEXT,"
+                + CALUCULATE_IS_EB + " TEXT," + CALUCULATE_EB_AMOUNT + " TEXT,"
+                + CALUCULATE_IS_MAINTAIN + " TEXT," + CALUCULATE_MAINTAIN_CHARGE + " TEXT,"
+                + CALUCULATE_TOTAL_AMOUNT + " TEXT," + CALUCULATE_RECEIVE_DATE + " TEXT,"
+                + CALUCULATE_RECEIVED_AMOUNT + " TEXT,"
+                + CALUCULATE_PENDING_AMOUNT + " TEXT" + ")";
+
+
         sqLiteDatabase.execSQL(CREATE_TABLE_CUSTOMER);
+        sqLiteDatabase.execSQL(CREATE_TABLE_CALCULATION);
 
     }
 
@@ -93,6 +106,7 @@ public class Database extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
 
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_CUSTOMER);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_CALCULATION);
 
 
         // Create tables again
@@ -144,12 +158,23 @@ public class Database extends SQLiteOpenHelper {
                 do {
                     DataModelAddCustomer modelData = new DataModelAddCustomer();
 
-                   /* modelData.setKey_favourite_id(Integer.parseInt(cursor.getString(0)));
-                    modelData.setFavourite_id(cursor.getString(1));
-                    modelData.setFavourite_title_name(cursor.getString(2));
-                    modelData.setFavourite_description(cursor.getString(3));
-                    modelData.setFavourite_author(cursor.getString(4));
-                    modelData.setFavourite_date_time_ago(cursor.getString(5));*/
+
+                    modelData.setCustomerAdd_KeyId(String.valueOf(cursor.getInt(0)));
+                    modelData.setCustomerAdd_residentName(cursor.getString(1));
+                    modelData.setCustomerAdd_residentMobileNumber(cursor.getString(2));
+                    modelData.setCustomerAdd_houseNumber(cursor.getString(3));
+                    modelData.setCustomerAdd_advanceAmount(cursor.getString(4));
+                    modelData.setCustomerAdd_rendAmount(cursor.getString(5));
+
+
+                    modelData.setCustomerAdd_joinDate(cursor.getString(6));
+                    modelData.setCustomerAdd_ebUnit(cursor.getString(7));
+                    modelData.setCustomerAdd_FirstEbUnit(cursor.getString(8));
+                    modelData.setCustomerAdd_SecondEbUnit(cursor.getString(9));
+                    modelData.setCustomerAdd_isWater(Boolean.parseBoolean(cursor.getString(10)));
+                    modelData.setCustomerAdd_waterAmount(cursor.getString(11));
+                    modelData.setCustomerAdd_isMaintenace(Boolean.parseBoolean(cursor.getString(12)));
+                    modelData.setCustomerAdd_maintenceAmount(cursor.getString(13));
                     dataList.add(modelData);
                 } while (cursor.moveToNext());
             }
